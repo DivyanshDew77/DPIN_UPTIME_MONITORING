@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { Activity, Bell, Zap, Clock, BarChart, Globe, Server, Shield, Wrench, 
   ChevronDown, ChevronUp, Menu, X, ArrowRight, Check, Mail, Phone, MapPin, 
   Facebook, Twitter, Instagram, Linkedin, Search, Settings } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [pricingPeriod, setPricingPeriod] = useState<'monthly' | 'annually'>('monthly');
+
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -296,7 +299,9 @@ function App() {
                 
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                   <Button size="lg">
+                    <button onClick={() => router.push('/dashboard')}>
                     Start Monitoring <ArrowRight className="ml-2 h-5 w-5" />
+                    </button>
                   </Button>
                   <Button variant="outline" size="lg">
                     View Demo
